@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../widgets/participant_tile/participant_tile.dart';
+import '../../widgets/primary_button.dart';
 import '../../styles/typos.dart';
 import '../../widgets/page_container.dart';
 
@@ -11,7 +13,7 @@ class DashboardView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageContainer(
       child: Column(
-        children: [
+        children: <Widget>[
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
@@ -33,7 +35,25 @@ class DashboardView extends StatelessWidget {
             height: 10,
           ),
           Image.asset('assets/images/bullet.png'),
-          
+          const SizedBox(
+            height: 29,
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text(
+                "Peserta Vaksinasi",
+                style: typosTextBold(type: TyposType.regular),
+              ),
+              PrimaryButton(
+                buttonText: "Tambah",
+                buttonOnPressed: () {},
+              ),
+            ],
+          ),
+          const SizedBox(height: 12.0),
+          const ParticipantTile(),
         ],
       ),
     );
