@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import '../styles/colors.dart';
 
+// widget buatan dibuat sebagai class
+// khusus untuk appbar, implements PreferredSizeWidget
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  // parameter buatan sendiri agar lebih custom
   final Color? backgroundColor = Colors.red;
   final Widget? title;
   final IconData leadingIcon;
@@ -18,18 +21,19 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: Center(
-        child: title,
+        child: title, //data dari parameter title
       ),
       leading: IconButton(
-        onPressed: onPressLeadingIcon,
-        icon: Icon(leadingIcon),
-        color: CustomColor.colorInkDarkest,
+        onPressed: onPressLeadingIcon, //data dari parameter onPressLeadingIcon
+        icon: Icon(leadingIcon), //data dari parameter leadingIcon
+        color: CustomColor.colorInkDarkest, //color custom dari colors.dart di folder /styles
       ),
-      backgroundColor: CustomColor.colorSkyWhite,
+      backgroundColor: CustomColor.colorSkyWhite, //color custom dari colors.dart di folder /styles
       elevation: 2,
     );
   }
 
+  // kalau ada implementasi PreferredSizeWidget, mesti ada ginian, referensi dari stack overflow
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

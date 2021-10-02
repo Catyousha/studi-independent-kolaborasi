@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// widget buatan dibuat sebagai class
+// widget custom untuk membalut page di halaman agar kode lebih singkat dan reusable
 class PageContainer extends StatelessWidget {
   final Widget child;
 

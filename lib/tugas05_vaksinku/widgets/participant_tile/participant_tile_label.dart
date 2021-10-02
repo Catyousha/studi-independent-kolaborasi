@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:kolaborasi_gits_app/tugas05_vaksinku/styles/typos.dart';
+import '../../styles/typos.dart';
 
+// widget buatan dibuat sebagai class
+// sebagai penampil nama dan nik peserta
 class ParticipantTileLabel extends StatelessWidget {
   const ParticipantTileLabel({
     Key? key,
@@ -17,11 +19,13 @@ class ParticipantTileLabel extends StatelessWidget {
       children: <Widget>[
         Text(
           name,
+          // menggunakan text style custom dari folder /styles file typos.dart
           style: typosTextBold(type: TyposType.small),
         ),
         const SizedBox(height: 3.0),
         Text(
           nik,
+          // menggunakan text style custom dari folder /styles file typos.dart
           style: typosTextRegular(type: TyposType.tiny),
         ),
       ],

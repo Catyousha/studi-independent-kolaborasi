@@ -4,6 +4,8 @@ import '../../widgets/primary_button.dart';
 import '../../styles/typos.dart';
 import '../../widgets/page_container.dart';
 
+// widget buatan dibuat sebagai class
+// sebagai penampil tampilan dashboard
 class DashboardView extends StatelessWidget {
   const DashboardView({
     Key? key,
@@ -11,6 +13,7 @@ class DashboardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // widget PageContainer dari folder /widgets
     return PageContainer(
       child: Column(
         children: <Widget>[
@@ -44,15 +47,21 @@ class DashboardView extends StatelessWidget {
             children: <Widget>[
               Text(
                 "Peserta Vaksinasi",
+                // menggunakan text style custom dari folder /styles file typos.dart
                 style: typosTextBold(type: TyposType.regular),
               ),
+              // menggunakan widget PrimaryButton dari folder /widgets
               PrimaryButton(
                 buttonText: "Tambah",
-                buttonOnPressed: () {},
+                buttonOnPressed: () {
+                  Navigator.pushNamed(context, '/tambah');
+                },
               ),
             ],
           ),
           const SizedBox(height: 12.0),
+
+          // menggunakan widget ParticipantTile dari folder /widgets
           const ParticipantTile(),
         ],
       ),

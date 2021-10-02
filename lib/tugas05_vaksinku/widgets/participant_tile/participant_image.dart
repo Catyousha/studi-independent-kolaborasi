@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:kolaborasi_gits_app/tugas05_vaksinku/styles/colors.dart';
-import 'package:kolaborasi_gits_app/tugas05_vaksinku/styles/shadows.dart';
+import '../../styles/colors.dart';
 
+// widget buatan dibuat sebagai class
+// sebagai penampil gambar peserta
 class ParticipantImage extends StatelessWidget {
   const ParticipantImage({
     Key? key,
