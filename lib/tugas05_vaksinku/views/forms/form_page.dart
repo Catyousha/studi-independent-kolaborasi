@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kolaborasi_gits_app/tugas05_vaksinku/widgets/custom_appbar.dart';
+import '../../models/form_screen_args.dart';
+import '../../widgets/custom_appbar.dart';
 import 'form_view.dart';
 
 class FormPage extends StatelessWidget {
@@ -7,6 +8,13 @@ class FormPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    late final FormScreenArguments args;
+    try {
+      args = ModalRoute.of(context)!.settings.arguments as FormScreenArguments;
+    } catch (_) {
+      Navigator.pop(context);
+    }
+
     return Scaffold(
       appBar: CustomAppBar(
         title: Image.asset(
@@ -15,9 +23,14 @@ class FormPage extends StatelessWidget {
           width: 150,
         ),
         leadingIcon: Icons.arrow_back,
-        onPressLeadingIcon: () {},
+        onPressLeadingIcon: () {
+          Navigator.pop(context);
+        },
       ),
-      body: FormView(),
+      body: FormView(
+        formType: args.type,
+        participantId: args.participantId,
+      ),
     );
   }
 }

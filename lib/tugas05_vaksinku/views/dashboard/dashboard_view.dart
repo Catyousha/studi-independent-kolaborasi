@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
-import '../../widgets/participant_tile/participant_tile.dart';
-import '../../widgets/primary_button.dart';
+import 'package:kolaborasi_gits_app/tugas05_vaksinku/models/form_screen_args.dart';
+import 'package:provider/provider.dart';
+
+import '../../models/participant_model.dart';
+import '../../providers/participant_provider.dart';
 import '../../styles/typos.dart';
 import '../../widgets/page_container.dart';
+import '../../widgets/participant_tile/participant_tile.dart';
+import '../../widgets/primary_button.dart';
 
 // widget buatan dibuat sebagai class
 // sebagai penampil tampilan dashboard
@@ -13,6 +18,10 @@ class DashboardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Participant> _participantList = Provider.of<ParticipantProvider>(
+      context,
+      listen: false,
+    ).list;
     // widget PageContainer dari folder /widgets
     return PageContainer(
       child: Column(
@@ -54,7 +63,13 @@ class DashboardView extends StatelessWidget {
               PrimaryButton(
                 buttonText: "Tambah",
                 buttonOnPressed: () {
-                  Navigator.pushNamed(context, '/tambah');
+                  Navigator.pushNamed(
+                    context,
+                    '/tambah',
+                    arguments: FormScreenArguments(
+                      type: FormArgsType.add,
+                    ),
+                  );
                 },
               ),
             ],
@@ -62,7 +77,13 @@ class DashboardView extends StatelessWidget {
           const SizedBox(height: 12.0),
 
           // menggunakan widget ParticipantTile dari folder /widgets
-          const ParticipantTile(),
+          ...List.generate(_participantList.length, (index) {
+            return ParticipantTile(
+              id: _participantList[index].id!,
+              name: _participantList[index].name!,
+              nik: _participantList[index].nik!,
+            );
+          })
         ],
       ),
     );

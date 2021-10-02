@@ -8,7 +8,16 @@ import 'participant_tile_label.dart';
 // widget buatan dibuat sebagai class
 // sebagai penampil tile peserta
 class ParticipantTile extends StatelessWidget {
-  const ParticipantTile({Key? key}) : super(key: key);
+  const ParticipantTile({
+    Key? key,
+    required this.id,
+    required this.name,
+    required this.nik,
+  }) : super(key: key);
+
+  final int id;
+  final String name;
+  final String nik;
 
   @override
   Widget build(BuildContext context) {
@@ -37,16 +46,18 @@ class ParticipantTile extends StatelessWidget {
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const <Widget>[
+              children: <Widget>[
                 // widget ParticipantTileLabel dari folder /widgets/participant_tile
                 ParticipantTileLabel(
-                  name: "Abdul Hanif",
-                  nik: "3204271810988903",
+                  name: name,
+                  nik: nik,
                 ),
-                SizedBox(height: 8),
-                
+                const SizedBox(height: 8),
+
                 // widget ParticipantTileActions dari folder /widgets/participant_tile
-                ParticipantTileActions(),
+                ParticipantTileActions(
+                  participantId: id,
+                ),
               ],
             ),
           ),
