@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:kolaborasi_gits_app/tugas05_vaksinku/styles/typos.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -40,11 +41,17 @@ class _SplashScreenState extends State<SplashScreen> {
           SizedBox(
             height: 50.0,
           ),
-          Text('Aplikasi Pendataan Pendaftar Vaksinasi\nPuskesmas Teyvat'),
-          SizedBox(
-            height: 100.0,
+          Text(
+            'Aplikasi Pendataan Pendaftar Vaksinasi\nPuskesmas Teyvat',
+            style: typosTextRegular(type: TyposType.small),
           ),
-          Text('© PT. Mencari Cinta Sejati'),
+          SizedBox(
+            height: 200.0,
+          ),
+          Text(
+            '© PT. Mencari Cinta Sejati',
+            style: TextStyle(fontSize: 10),
+          ),
         ],
       ),
     );
