@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void navigationPage() {
-    Navigator.of(context).pushReplacementNamed('/dashboard');
+    Navigator.popAndPushNamed(context, "/dashboard");
   }
 
   @override

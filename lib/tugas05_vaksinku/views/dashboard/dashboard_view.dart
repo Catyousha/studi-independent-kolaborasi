@@ -61,22 +61,24 @@ class DashboardView extends StatelessWidget {
               ),
               const SizedBox(width: 16),
               // menggunakan widget PrimaryButton dari folder /widgets
-              Expanded(
-                child: PrimaryButton(
-                  buttonText: "Tambah",
-                  buttonOnPressed: () {
-                    // navigasi ke laman /tambah
-                    // pelemparan data dilakukan melalui arguments dengan class FormScreenArguments
-                    Navigator.pushNamed(
-                      context,
-                      '/tambah',
-                      arguments: FormScreenArguments(
-                        // menandakan laman form tersebut bertipe penambahan peserta
-                        type: FormArgsType.add,
-                      ),
-                    );
-                  },
+              PrimaryButton(
+                buttonPadding: const EdgeInsets.symmetric(
+                  vertical: 6,
+                  horizontal: 10,
                 ),
+                buttonText: "Tambah",
+                buttonOnPressed: () {
+                  // navigasi ke laman /tambah
+                  // pelemparan data dilakukan melalui arguments dengan class FormScreenArguments
+                  Navigator.pushNamed(
+                    context,
+                    '/tambah',
+                    arguments: FormScreenArguments(
+                      // menandakan laman form tersebut bertipe penambahan peserta
+                      type: FormArgsType.add,
+                    ),
+                  );
+                },
               ),
             ],
           ),

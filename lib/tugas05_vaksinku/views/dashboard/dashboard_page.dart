@@ -9,7 +9,6 @@ class DashboardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       // CustomAppBar: widget buatan yang dibuat dalam folder /widgets
       appBar: CustomAppBar(
@@ -19,14 +18,14 @@ class DashboardPage extends StatelessWidget {
           width: 150,
         ),
         leadingIcon: Icons.logout,
-        onPressLeadingIcon: () {},
+        onPressLeadingIcon: () {
+          Navigator.pop(context);
+        },
       ),
-      
+
       // body dalam Scaffold dijadikan widget terpisah
       // ditampilkan widget DashboardView dalam folder /views/dashboard
       body: const DashboardView(),
     );
   }
 }
-
-
