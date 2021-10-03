@@ -14,6 +14,7 @@ class VaksinkuApp extends StatelessWidget {
       create: (_) => ParticipantProvider(),
       child: MaterialApp(
         title: "VaksinKu",
+
         debugShowCheckedModeBanner: false,
         // daftar alamat dan widget halaman
         routes: {
