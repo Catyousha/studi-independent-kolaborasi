@@ -59,21 +59,24 @@ class DashboardView extends StatelessWidget {
                 // menggunakan text style custom dari folder /styles file typos.dart
                 style: typosTextBold(type: TyposType.regular),
               ),
+              const SizedBox(width: 16),
               // menggunakan widget PrimaryButton dari folder /widgets
-              PrimaryButton(
-                buttonText: "Tambah",
-                buttonOnPressed: () {
-                  // navigasi ke laman /tambah
-                  // pelemparan data dilakukan melalui arguments dengan class FormScreenArguments
-                  Navigator.pushNamed(
-                    context,
-                    '/tambah',
-                    arguments: FormScreenArguments(
-                      // menandakan laman form tersebut bertipe penambahan peserta
-                      type: FormArgsType.add,
-                    ),
-                  );
-                },
+              Expanded(
+                child: PrimaryButton(
+                  buttonText: "Tambah",
+                  buttonOnPressed: () {
+                    // navigasi ke laman /tambah
+                    // pelemparan data dilakukan melalui arguments dengan class FormScreenArguments
+                    Navigator.pushNamed(
+                      context,
+                      '/tambah',
+                      arguments: FormScreenArguments(
+                        // menandakan laman form tersebut bertipe penambahan peserta
+                        type: FormArgsType.add,
+                      ),
+                    );
+                  },
+                ),
               ),
             ],
           ),

@@ -49,34 +49,38 @@ class ParticipantTileActions extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         // menggunakan widget PrimaryButton dalam folder /widgets
-        PrimaryButton(
-          buttonText: "Detail",
-          buttonOnPressed: () {
-            // navigasi ke laman /detail
-            // pelemparan data dilakukan melalui arguments dengan class FormScreenArguments
-            Navigator.pushNamed(
-              context,
-              '/detail',
-              arguments: FormScreenArguments(
-                type: FormArgsType.detail,
-                participantId: participantId,
-              ),
-            );
-          },
+        Expanded(
+          child: PrimaryButton(
+            buttonText: "Detail",
+            buttonOnPressed: () {
+              // navigasi ke laman /detail
+              // pelemparan data dilakukan melalui arguments dengan class FormScreenArguments
+              Navigator.pushNamed(
+                context,
+                '/detail',
+                arguments: FormScreenArguments(
+                  type: FormArgsType.detail,
+                  participantId: participantId,
+                ),
+              );
+            },
+          ),
         ),
         const SizedBox(width: 13),
 
         // menggunakan widget PrimaryButton dalam folder /widgets
-        PrimaryButton(
-          buttonText: "Hapus",
-          buttonOnPressed: () {
-            // tampilkan widget AlertDialog dari fungsi _showRemoveDialog()
-            showDialog<void>(
-              context: context,
-              builder: (context) => _showRemoveDialog(context),
-            );
-          },
-          buttonColor: CustomColor.colorRedBase,
+        Expanded(
+          child: PrimaryButton(
+            buttonText: "Hapus",
+            buttonOnPressed: () {
+              // tampilkan widget AlertDialog dari fungsi _showRemoveDialog()
+              showDialog<void>(
+                context: context,
+                builder: (context) => _showRemoveDialog(context),
+              );
+            },
+            buttonColor: CustomColor.colorRedBase,
+          ),
         ),
       ],
     );

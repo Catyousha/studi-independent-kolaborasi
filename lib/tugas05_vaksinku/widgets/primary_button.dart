@@ -29,13 +29,13 @@ class PrimaryButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(16.0),
         ),
         primary: buttonColor, // data dari parameter buttonColor
-        
+
         // data dari parameter buttonPadding
         // kalau datanya null, pakai EdgeInsets default di widget ini
         padding: buttonPadding ??
             const EdgeInsets.symmetric(
               vertical: 6.0,
-              horizontal: 32.0,
+              horizontal: 2.0,
             ),
       ),
       child: Text(
