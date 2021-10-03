@@ -3,16 +3,18 @@ import 'package:flutter/services.dart';
 import '../styles/colors.dart';
 import '../styles/typos.dart';
 
+// widget buatan dibuat sebagai class
 class PrimaryTextInput extends StatelessWidget {
+  // parameter buatan sendiri agar lebih custom
   const PrimaryTextInput({
     Key? key,
-    required this.label,
-    this.labelText,
-    this.initialValue,
-    this.numberInput = false,
-    this.inputFormatters,
-    this.isRequired = true,
-    required this.valueSetter,
+    required this.label, // tulisan diatas input
+    this.labelText, // teks placeholder
+    this.initialValue, // value awal dalam inputan
+    this.numberInput = false, // penentu inputan berupa angka
+    this.inputFormatters, // formatter input
+    this.isRequired = true, // penentu input wajib diisi
+    required this.valueSetter, // fungsi pengubah value dengan isian inputan
   }) : super(key: key);
 
   final String label;
@@ -61,14 +63,18 @@ class PrimaryTextInput extends StatelessWidget {
             labelText: labelText ?? "Masukkan $label...",
             contentPadding: const EdgeInsets.all(16.0),
           ),
+
+          // kalau tombol submit ditekan, validasi dengan validator
           validator: (value) {
             if ((value == null || value.isEmpty) && isRequired) {
               return 'Kolom ini wajib diisi!';
             }
             return null;
           },
-          onSaved: (String? value) {
-            valueSetter(value);
+
+          // ketika validasi berhasil dan form disimpan, set value dengan isian pada inputan
+          onSaved: (String? val) {
+            valueSetter(val);
           },
         ),
         const SizedBox(height: 20),

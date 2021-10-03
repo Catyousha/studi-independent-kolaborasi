@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kolaborasi_gits_app/tugas05_vaksinku/models/form_screen_args.dart';
+import '../../models/form_screen_args.dart';
 import 'package:provider/provider.dart';
 
 import '../../models/participant_model.dart';
@@ -18,10 +18,10 @@ class DashboardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Participant> _participantList = Provider.of<ParticipantProvider>(
-      context,
-      listen: false,
-    ).list;
+    // mendapatkan daftar peserta dalam 'database' list dari class ParticipantProvider
+    List<Participant> _participantList =
+        Provider.of<ParticipantProvider>(context).list;
+
     // widget PageContainer dari folder /widgets
     return PageContainer(
       child: Column(
@@ -63,10 +63,13 @@ class DashboardView extends StatelessWidget {
               PrimaryButton(
                 buttonText: "Tambah",
                 buttonOnPressed: () {
+                  // navigasi ke laman /tambah
+                  // pelemparan data dilakukan melalui arguments dengan class FormScreenArguments
                   Navigator.pushNamed(
                     context,
                     '/tambah',
                     arguments: FormScreenArguments(
+                      // menandakan laman form tersebut bertipe penambahan peserta
                       type: FormArgsType.add,
                     ),
                   );
@@ -76,14 +79,27 @@ class DashboardView extends StatelessWidget {
           ),
           const SizedBox(height: 12.0),
 
+          // kalau database kosong, tampilkan tulisan "Tidak ada peserta terdaftar."
+          if (_participantList.isEmpty)
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Center(
+                child: Text(
+                  "Tidak ada peserta terdaftar.",
+                  style: typosTextBold(type: TyposType.regular),
+                ),
+              ),
+            ),
+
+          // meng-generate list berdasarkan isi database kemudian dicetak dalam widget ParticipantTile
           // menggunakan widget ParticipantTile dari folder /widgets
           ...List.generate(_participantList.length, (index) {
             return ParticipantTile(
-              id: _participantList[index].id!,
-              name: _participantList[index].name!,
-              nik: _participantList[index].nik!,
+              id: _participantList[index].id!, // id peserta
+              name: _participantList[index].name!, // nama peserta
+              nik: _participantList[index].nik!, // nik peserta
             );
-          })
+          }),
         ],
       ),
     );

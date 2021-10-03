@@ -15,6 +15,7 @@ class ParticipantTile extends StatelessWidget {
     required this.nik,
   }) : super(key: key);
 
+  // menerima parameter id, nama, dan nik peserta
   final int id;
   final String name;
   final String nik;
@@ -48,6 +49,7 @@ class ParticipantTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 // widget ParticipantTileLabel dari folder /widgets/participant_tile
+                // melemparkan nama dan nik peserta untuk ditampilkan
                 ParticipantTileLabel(
                   name: name,
                   nik: nik,
@@ -55,6 +57,7 @@ class ParticipantTile extends StatelessWidget {
                 const SizedBox(height: 8),
 
                 // widget ParticipantTileActions dari folder /widgets/participant_tile
+                // melemparkan id peserta untuk digunakan
                 ParticipantTileActions(
                   participantId: id,
                 ),

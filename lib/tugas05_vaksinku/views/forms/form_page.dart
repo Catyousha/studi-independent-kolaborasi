@@ -8,6 +8,8 @@ class FormPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    // dapatkan data hasil pelemparan
     late final FormScreenArguments args;
     try {
       args = ModalRoute.of(context)!.settings.arguments as FormScreenArguments;
@@ -28,8 +30,8 @@ class FormPage extends StatelessWidget {
         },
       ),
       body: FormView(
-        formType: args.type,
-        participantId: args.participantId,
+        formType: args.type, // FormArgsType.add atau FormArgsType.detail
+        participantId: args.participantId, // id peserta
       ),
     );
   }
